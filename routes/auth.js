@@ -23,23 +23,40 @@ router.post('/signup', (req, res) => {
   .then (([user, created]) => {
     if (created){
       console.log(`${user.name} was created`);
-      res.redirect('/')
+      // FLASH MESSAGE
+      passport.authenticate('local', {
+        successRedirect:'/',
+        successFlash: 'Account created and logging in'
+      })(req, res)
+      // before passport
+      // res.redirect('/')
     }
     else {
       // email exist
       console.log('email already exist');
+      // FLASH 
+      req.flash('Email already exist. Please try again.')
       res.redirect('/auth/signup')
     }
   })
   .catch(err => {
     console.log(err);
+    req.flash(`Error, unfortunately... ${err}`)
     res.redirect('/auth/signup')
   })
 })
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/auth/login'
+  failureRedirect: '/auth/login',
+  successFlash: 'Welcome back.',
+  failureFlash: 'Either email or password is incorrect, please try again.'
 }))
+
+router.get('/logout', (req,res) => {
+  req.logOut();
+  req.flash('See you again soon. Logging out')
+  res.redirect('/')
+})
 
 module.exports = router;
