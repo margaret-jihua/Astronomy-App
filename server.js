@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
 const app = express();
+const session = require('express-session')
+const SECRET_SESSION = process.env.SECRET_SESSION;
+const passport = require('./config/ppConfig')
 
 app.set('view engine', 'ejs');
 
@@ -9,6 +12,18 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
+
+// secret: What we giving user to use our site
+// resave: Save the session even if it's modifiedm make it false
+// saveUnintialized: if we have a new session, we will save it, thus, setting to true
+app.use(session({
+  secret: SECRET_SESSION,
+  resave: false,
+  saveUninitialized: true
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.get('/', (req, res) => {
   res.render('index');
