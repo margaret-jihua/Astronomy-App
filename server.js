@@ -28,6 +28,17 @@ app.use(passport.session())
 // flash for temporary messages
 app.use(flash())
 
+//middleware to show alerts for every view
+app.use ((req, res, next) => {
+  res.locals.alerts = req.flash()
+  res.locals.currentUser = req.user
+  next()
+})
+
+app.get('/', (req, res) => {
+  res.render('index', {alert: req.flash()})
+})
+
 app.get('/', (req, res) => {
   res.render('index');
 });

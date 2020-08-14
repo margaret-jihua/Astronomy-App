@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
+    <% include partials/alerts %> 
     <header>
       <nav>
         <ul>
+        <% if (!currentUser) { %>
           <li><a href="/auth/signup">Signup</a></li>
           <li><a href="/auth/login">Login</a></li>
+        <% } else { %> 
           <li><a href="/auth/logout">Logout</a></li>
           <li><a href="/profile">Profile</a></li>
+        <% } %> 
         </ul>
       </nav>
     </header>
