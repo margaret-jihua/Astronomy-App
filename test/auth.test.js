@@ -4,6 +4,7 @@ var app = require('../server');
 var db = require('../models');
 
 before(function(done) {
+  // wipe out the database
   db.sequelize.sync({ force: true }).then(function() {
     done();
   });

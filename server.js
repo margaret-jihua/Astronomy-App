@@ -7,6 +7,9 @@ const SECRET_SESSION = process.env.SECRET_SESSION;
 const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
 
+// require the authorization middleware at the top of the page
+const isLoggedIn = require('./middleware/isLoggedIn')
+
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
@@ -35,15 +38,15 @@ app.use ((req, res, next) => {
   next()
 })
 
-app.get('/', (req, res) => {
-  res.render('index', {alert: req.flash()})
-})
+// app.get('/', (req, res) => {
+//   res.render('index', { alerts: req.flash() })
+// })
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', { alerts: res.locals.alerts });
 });
 
-app.get('/profile', (req, res) => {
+app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
 
