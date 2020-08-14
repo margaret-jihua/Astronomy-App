@@ -1,4 +1,6 @@
-# Express Authentication
+# Astronomy App
+
+## Express Authentication
 
 Express authentication template using Passport + flash messages + custom middleware
 
