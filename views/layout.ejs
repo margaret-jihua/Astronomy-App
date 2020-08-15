@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Auth App</title>
+    <link rel="icon" href="https://img.icons8.com/color/48/000000/saturn-planet.png" type="image/x-icon">
+    <title>Astronomy App</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS Link -->
     <link rel="stylesheet" href="/css/style.css">
   </head>
+
   <body>
     <% include partials/alerts %> 
+
     <header>
-      <nav>
-        <ul>
+      <nav class="#212121 grey darken-4">
+        <a href="/" class="brand-logo center">
+          <img src="https://img.icons8.com/color/48/000000/saturn-planet.png"/>
+          Astronomy Picture of Your Day</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
         <% if (!currentUser) { %>
-          <li><a href="/auth/signup">Signup</a></li>
+          <li><a href="/auth/signup">Sign Up</a></li>
           <li><a href="/auth/login">Login</a></li>
         <% } else { %> 
           <li><a href="/auth/logout">Logout</a></li>
@@ -21,7 +32,38 @@
         </ul>
       </nav>
     </header>
-    <h1>Auth App</h1>
+
     <%- body %>
+
+    <footer>
+      <div class="row">
+        <div class="col m4 s12">
+          <div>
+            <!-- <img src="https://img.icons8.com/color/48/000000/icons8-new-logo.png"/> -->
+            Icons pack by <a href="https://icons8.com">Icons8</a>
+          </div>
+          <div>
+            <!-- <img src="https://img.icons8.com/color/48/000000/nasa.png"/> -->
+            Pictures requested from <a href="https://www.nasa.gov/">NASA</a> powered by <a href="https://apod.nasa.gov/apod/astropix.html">APOD API</a>
+          </div>
+        </div>
+        <div class="col m4 s12 center">
+          <a href="https://github.com/margaret-jihua/Astronomy-App"><img src="https://img.icons8.com/bubbles/50/000000/github.png"/></a>
+          <a href="https://www.linkedin.com/in/margaret-jihua/"><img src="https://img.icons8.com/bubbles/50/000000/linkedin.png"/></a>
+        </div>
+        <div class="col m4 s12">
+          Thanks Lucas & Lily for emotional support!
+          <img src="https://i.imgur.com/kbZa1Pz.png" alt="Lucas" height="48">
+          <img src="https://i.imgur.com/XPvw1Nd.png" alt="Lily" height="48">
+          <a href="https://www.instagram.com/walklikeacat/"><img src="https://img.icons8.com/fluent/30/000000/instagram-new.png"/></a>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container center">© 2020 Copyright Margaret Huang</div>
+      </div>
+    </footer>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

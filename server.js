@@ -1,14 +1,17 @@
 require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
-const app = express();
+const axios = require('axios')
+const moment = require('moment')
 const session = require('express-session')
 const SECRET_SESSION = process.env.SECRET_SESSION;
+const API_KEY = process.env.NASA_API_KEY
 const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
-
+const app = express();
 // require the authorization middleware at the top of the page
-const isLoggedIn = require('./middleware/isLoggedIn')
+const isLoggedIn = require('./middleware/isLoggedIn');
+const { response } = require('express');
 
 app.set('view engine', 'ejs');
 
@@ -38,12 +41,16 @@ app.use ((req, res, next) => {
   next()
 })
 
-// app.get('/', (req, res) => {
-//   res.render('index', { alerts: req.flash() })
-// })
-
 app.get('/', (req, res) => {
-  res.render('index', { alerts: res.locals.alerts });
+  let date = moment().format('YYYY-MM-DD')
+  let url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`
+  axios.get(url)
+  .then(response => {
+    res.render('index', { apod: response.data, alerts: res.locals.alerts });
+  })
+  .catch(err => {
+    console.log(err);
+  })
 });
 
 app.get('/profile', isLoggedIn, (req, res) => {

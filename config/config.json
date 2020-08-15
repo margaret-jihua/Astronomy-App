@@ -1,16 +1,16 @@
 {
   "development": {
-    "database": "authapp",
+    "database": "astronomy_app",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "authapp_test",
+    "database": "astronomy_app_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "authapp_production",
+    "database": "astronomy_app_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
