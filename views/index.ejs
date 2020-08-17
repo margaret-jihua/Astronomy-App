@@ -1,3 +1,30 @@
-<div>
-    <img src="<%= apod.hdurl %>" alt="astronomy picture of today" height="500">
+<div class="">
+    <% if (apod.hdurl && apod.media_type === 'image') { %> 
+        <img class="cover" src="<%= apod.hdurl %>" alt="astronomy picture of today" height="600">
+    <% } else if (apod.url && apod.media_type === 'video') { %> 
+        <iframe class="cover" src="<%= apod.url %>" height="600"></iframe>
+    <% } else { %> 
+        <img src="https://http.cat/204" alt="Cannot Find Content">
+    <% } %> 
+</div>
+
+<div class="row">
+    <% gallery.forEach( g => { %>
+        <div class="col m4 s6">
+            <div class="card">
+                <div class="card-image">
+                    <% if (g.hdurl && g.media_type === 'image') { %> 
+                        <img src="<%= g.url %>" alt="<%= g.date %>>
+                    <% } else if (g.url && g.media_type === 'video') { %> 
+                        <iframe src="<%= g.url %>"></iframe>
+                    <% } else { %> 
+                        <img src="https://http.cat/204" alt="Cannot Find Content">
+                    <% } %> 
+                </div>
+                <div class="grey darken-4">
+                    <%= g.title %>
+                </div>
+            </div>
+        </div>
+    <% }) %> 
 </div>

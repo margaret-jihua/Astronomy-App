@@ -41,18 +41,51 @@ app.use ((req, res, next) => {
   next()
 })
 
+// Home Route
 app.get('/', (req, res) => {
   let date = moment().format('YYYY-MM-DD')
-  let url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`
-  axios.get(url)
-  .then(response => {
-    res.render('index', { apod: response.data, alerts: res.locals.alerts });
+  let todayURL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`
+  let galleryURL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=6`
+  axios.get(todayURL)
+  .then( apodData => {
+    //Get random 6 pictures for gallery
+    axios.get(galleryURL)  
+    .then(galleryData => {
+      res.render('index', { 
+        apod: apodData.data, 
+        gallery: galleryData.data, 
+        alerts: res.locals.alerts });
+    })
+    .catch(err => {
+      console.log(err);
+    })
   })
   .catch(err => {
     console.log(err);
   })
 });
 
+// Search 
+app.get('/search', (req, res) => {
+  let date = moment().format('YYYY-MM-DD')
+  res.render('search',{date})
+})
+
+// Detail 
+app.get('/detail', (req, res) => {
+  let date = req.query.date
+  let url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`
+  axios.get(url)
+  .then( apodData => {
+    res.render('detail', {apod: apodData.data,})
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+
+
+// Profile 
 app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
