@@ -1,5 +1,13 @@
 # Astronomy App
 
+## User Story
+
+As a user, I want to search the Astronomy Picture by the date 
+* As a user, I want to sign up to save my favorite pictures
+* As a user, I want to view my saved pictures in different category
+* As a user, I can delete pictures saved in favorite
+* As a user, I can delete categories along with pictures saved in it
+
 ## Express Authentication
 
 Express authentication template using Passport + flash messages + custom middleware

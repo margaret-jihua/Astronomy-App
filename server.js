@@ -12,6 +12,7 @@ const app = express();
 // require the authorization middleware at the top of the page
 const isLoggedIn = require('./middleware/isLoggedIn');
 const { response } = require('express');
+const db = require('./models');
 
 app.set('view engine', 'ejs');
 
@@ -84,11 +85,60 @@ app.get('/detail', (req, res) => {
   })
 })
 
-
 // Profile 
 app.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile');
+  let userName = req.user.name;
+  db.user.findOne({
+    where: {id: req.user.id}
+  })
+  .then(user =>{
+    user.getFaves()
+    .then(faves => {
+      res.render('profile', {userName, faves});
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  })
+  .catch(err => {
+    console.log(err);
+  })
 });
+
+app.post('/profile', isLoggedIn, (req, res) => {
+  let date = req.body.date
+  let url = req.body.url
+  console.log(date, url);
+  db.user.findOne({
+    where: {id: req.user.id }
+  })
+  .then(user => {
+    db.fave.findOrCreate({
+      where: {
+        date: date,
+        url: url
+      }
+    })
+    .then(([fave, created]) => {
+      console.log(created);
+      user.addFave(fave)
+      .then(newRelationship => {
+        console.log('New Relationship');
+        console.log(newRelationship);
+        res.redirect('/profile')
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
 
 app.use('/auth', require('./routes/auth'));
 

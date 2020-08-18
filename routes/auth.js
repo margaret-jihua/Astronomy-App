@@ -12,7 +12,7 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   db.user.findOrCreate({
     where: { email: req.body.email },
     defaults: {
