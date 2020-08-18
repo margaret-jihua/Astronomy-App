@@ -97,18 +97,6 @@ app.get('/detail', (req, res) => {
   })
 })
 
-// app.post('/detail', (req, res) => {
-//   let date = req.query.date
-//   let url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`
-//   axios.get(url)
-//   .then( apodData => {
-//     res.render('detail', {apod: apodData.data,})
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   })
-// })
-
 // Profile 
 app.get('/profile', isLoggedIn, (req, res) => {
   let userName = req.user.name;

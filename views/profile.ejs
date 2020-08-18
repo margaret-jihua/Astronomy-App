@@ -6,7 +6,11 @@
         <% faves.forEach( f =>{ %>
             <div class="col l3 s6">
                 <img class="cover" src="<%= f.url %>" alt="<%= f.date %>" height="200">
-                <span><%= f.date %></span>
+                <p><%= f.date %></p>
+                <form method="GET" action="/detail">
+                    <input hidden type="date" id="date" name="date" value="<%= f.date %>">
+                    <button type="submit">See Detail</button>
+                </form>
             </div>
         <%}) %> 
     </div>
