@@ -1,0 +1,9 @@
+<div class="container center">
+    
+    <iframe class="cover" src="<%= fave.url %>"></iframe>
+    
+    <form method="GET" action="/detail">
+        <input hidden type="date" id="date" name="date" value="<%= fave.date %>">
+        <button type="submit">See Detail</button>
+    </form>
+</div>

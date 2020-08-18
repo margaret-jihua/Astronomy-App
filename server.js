@@ -47,6 +47,7 @@ app.get('/', (req, res) => {
   let date = moment().format('YYYY-MM-DD')
   let todayURL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`
   let galleryURL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=6`
+  // Get astronmy picture of today
   axios.get(todayURL)
   .then( apodData => {
     //Get random 6 pictures for gallery
@@ -97,63 +98,8 @@ app.get('/detail', (req, res) => {
   })
 })
 
-// Profile 
-app.get('/profile', isLoggedIn, (req, res) => {
-  let userName = req.user.name;
-  db.user.findOne({
-    where: {id: req.user.id}
-  })
-  .then(user =>{
-    user.getFaves()
-    .then(faves => {
-      res.render('profile', {userName, faves});
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  })
-  .catch(err => {
-    console.log(err);
-  })
-});
-
-app.post('/profile', isLoggedIn, (req, res) => {
-  let date = req.body.date
-  let url = req.body.url
-  console.log(date, url);
-  db.user.findOne({
-    where: {id: req.user.id }
-  })
-  .then(user => {
-    db.fave.findOrCreate({
-      where: {
-        date: date,
-        url: url
-      }
-    })
-    .then(([fave, created]) => {
-      console.log(created);
-      user.addFave(fave)
-      .then(newRelationship => {
-        console.log('New Relationship');
-        console.log(newRelationship);
-        res.redirect('/profile')
-      })
-      .catch(err => {
-        console.log(err);
-      })
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  })
-  .catch(err => {
-    console.log(err);
-  })
-})
-
 app.use('/auth', require('./routes/auth'));
-
+app.use('/profile', require('./routes/profile'))
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {

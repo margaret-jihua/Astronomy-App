@@ -35,6 +35,10 @@
             <% } %>
             <p><%= g.date %></p>
             <p><%= g.title %></p>
+            <form method="GET" action="/detail">
+                <input hidden type="date" id="date" name="date" value="<%= g.date %>">
+                <button type="submit">See More Information</button>
+            </form>
         </div>
     <% }) %> 
 </div>
