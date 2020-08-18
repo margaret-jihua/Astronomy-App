@@ -14,9 +14,9 @@
     </div>
     <div>
         <% if (apod.hdurl && apod.media_type === 'image') { %> 
-            <img class="cover" src="<%= apod.hdurl %>" alt="<%= apod.date %> " height="600">
+            <img class="cover" src="<%= apod.hdurl %>" alt="<%= apod.date %> " height="100%">
         <% } else if (apod.url && apod.media_type === 'video') { %> 
-            <iframe class="cover" src="<%= apod.url %>" height="600"></iframe>
+            <iframe class="cover" src="<%= apod.url %>" height="100%"></iframe>
         <% } else { %> 
             <img src="https://http.cat/204" alt="Cannot Find Content">
         <% } %> 
@@ -25,6 +25,6 @@
         <% if(apod.copyright) { %> 
             <p class="center">Image credit & copyright: <%= apod.copyright %></p>
         <% } %> 
-        <p>explanation: <%= apod.explanation %></p>
+        <p>Explanation: <%= apod.explanation %></p>
     </div>
 </div>

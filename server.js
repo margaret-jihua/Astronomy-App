@@ -72,6 +72,18 @@ app.get('/search', (req, res) => {
   res.render('search',{date})
 })
 
+// Gallery
+app.get('/gallery', (req, res) => {
+  let galleryURL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=15`
+  axios.get(galleryURL)  
+  .then(galleryData => {
+    res.render('gallery', { gallery: galleryData.data })
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+
 // Detail 
 app.get('/detail', (req, res) => {
   let date = req.query.date
@@ -84,6 +96,18 @@ app.get('/detail', (req, res) => {
     console.log(err);
   })
 })
+
+// app.post('/detail', (req, res) => {
+//   let date = req.query.date
+//   let url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`
+//   axios.get(url)
+//   .then( apodData => {
+//     res.render('detail', {apod: apodData.data,})
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   })
+// })
 
 // Profile 
 app.get('/profile', isLoggedIn, (req, res) => {
