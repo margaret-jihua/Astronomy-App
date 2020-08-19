@@ -1,6 +1,6 @@
 <div class="row center">
     <% gallery.forEach( g => { %>
-        <div class="col m4 s6">
+        <div class="col l4 m6 s12">
             <% if (g.url && g.media_type === 'image') { %> 
                 <img class="cover" src="<%= g.url %>" alt="<%= g.date %>" height="300">
             <% } else if (g.url && g.media_type === 'video') { %> 
@@ -8,12 +8,15 @@
             <% } else { %> 
                 <img class="cover" src="https://http.cat/204" alt="Cannot Find Content" height="300">
             <% } %> 
-            <p><%= g.date %></p>
-            <p><%= g.title %></p>
-            <form method="GET" action="/detail">
-                <input hidden type="date" id="date" name="date" value="<%= g.date %>">
-                <button type="submit">See More Information</button>
-            </form>
+            <div>
+                <p><%= g.date %></p>
+                <p><%= g.title %></p>
+                <form method="GET" action="/detail">
+                    <input hidden type="date" id="date" name="date" value="<%= g.date %>">
+                    <button type="submit">See More Information</button>
+                </form>
+            </div>
+            
         </div>
     <% }) %> 
 </div>

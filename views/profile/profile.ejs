@@ -4,7 +4,7 @@
     <h4>My Gallery</h4>
     <div class="row">
         <% faves.forEach( f =>{ %>
-            <div class="col l3 s6">
+            <div class="col l3 m6 s12">
                 <% if (f.url.substring(8,11) === 'www') { %> 
                     <iframe class="cover" src="<%= f.url %>" height="200"></iframe>
                 <% } else { %> 
@@ -21,7 +21,7 @@
                     <input hidden type="text" name="id" value="<%= f.id %>">
                     <button type="submit">Delete</button>
                 </form>
-                
+
             </div>
         <%}) %> 
     </div>
