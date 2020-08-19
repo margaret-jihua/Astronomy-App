@@ -25,7 +25,8 @@ router.get('/', isLoggedIn, (req, res) => {
         console.log(err);
     })
 });
-  
+
+// Add to Favorite form, add date&url to faves, related with user
 router.post('/', isLoggedIn, (req, res) => {
     let date = req.body.date
     let url = req.body.url

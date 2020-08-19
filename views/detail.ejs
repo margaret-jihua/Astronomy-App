@@ -9,7 +9,7 @@
             <% } else { %> 
                 <input hidden type="text" id="url" name="url" value="<%= apod.url %>">
             <% } %> 
-            <button type="submit">Add to Favorite</button>
+            <button class="fave-btn" type="submit">Add to Favorite</button>
         </form>
     </div>
     <div class="container center">
@@ -26,5 +26,8 @@
             <p class="center">Image credit & copyright: <%= apod.copyright %></p>
         <% } %> 
         <p>Explanation: <%= apod.explanation %></p>
+    </div>
+    <div class="container">
+        <h6>Commend: </h6>
     </div>
 </div>
