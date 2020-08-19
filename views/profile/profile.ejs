@@ -5,14 +5,23 @@
     <div class="row">
         <% faves.forEach( f =>{ %>
             <div class="col l3 s6">
-                <a href="/profile/<%= f.id %>">
+                <% if (f.url.substring(8,11) === 'www') { %> 
+                    <iframe class="cover" src="<%= f.url %>" height="200"></iframe>
+                <% } else { %> 
                     <img class="cover" src="<%= f.url %>" alt="<%= f.date %>" height="200">
-                </a>
+                <% } %> 
+
                 <p><%= f.date %></p>
+
+                <a href="/profile/<%= f.id %>">
+                    <button>View</button>
+                </a>
+
                 <form method="POST" action="/profile/<%= f.id %>/?_method=DELETE"">
                     <input hidden type="text" name="id" value="<%= f.id %>">
                     <button type="submit">Delete</button>
                 </form>
+                
             </div>
         <%}) %> 
     </div>

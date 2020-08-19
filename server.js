@@ -75,7 +75,7 @@ app.get('/search', (req, res) => {
 
 // Gallery
 app.get('/gallery', (req, res) => {
-  let galleryURL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=15`
+  let galleryURL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=18`
   axios.get(galleryURL)  
   .then(galleryData => {
     res.render('gallery', { gallery: galleryData.data })
