@@ -23,14 +23,15 @@
             <img src="https://img.icons8.com/color/48/000000/saturn-planet.png"/>
             Astronomy Picture of Your Day
           </a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <% if (!currentUser) { %>
-            <li><a href="/auth/signup">Sign Up</a></li>
-            <li><a href="/auth/login">Login</a></li>
-          <% } else { %> 
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
-          <% } %> 
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <% if (!currentUser) { %>
+              <li><a href="/auth/signup">Sign Up</a></li>
+              <li><a href="/auth/login">Login</a></li>
+            <% } else { %> 
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/auth/logout">Logout</a></li>
+            <% } %> 
           </ul>
           <ul class="left hide-on-med-and-down">
             <li><a href="/search">Search</a></li>
@@ -38,6 +39,18 @@
           </ul>
         </div>
       </nav>
+
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="/search">Search</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <% if (!currentUser) { %>
+            <li><a href="/auth/signup">Signup</a></li>
+            <li><a href="/auth/login">Login</a></li>
+          <% } else { %>
+            <li><a href="/auth/logout">Logout</a></li>
+            <li><a href="/profile">Profile</a></li>
+          <% } %>
+      </ul>
     </header>
 
     <%- body %>
@@ -74,5 +87,11 @@
 
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, {});
+      });
+    </script>
   </body>
 </html>
