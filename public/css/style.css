@@ -16,6 +16,16 @@ footer {
   padding-top: 50px;
 }
 
+button {
+  box-shadow: none;
+  border: none;
+  background: none;
+}
+
+button:focus {
+  background: none;
+}
+
 /* .row {
   display: flex;
   flex-wrap: wrap;
@@ -44,6 +54,7 @@ footer {
   box-shadow: 0 0 1em rgb(179, 176, 176);
 }
 
+/* --------------Search Page-------------- */
 .search-background {
   height: 600px;
   background-repeat: no-repeat;
@@ -52,8 +63,6 @@ footer {
 }
 
 .search-btn {
-  box-shadow: none;
-  border: none;
   padding: 10px;
   margin-top: 12px;
   width: 100%;
@@ -62,6 +71,38 @@ footer {
 
 .search-btn:hover {
   background-color: rgb(81, 132, 241);
+}
+
+/* --------------Gallery Page-------------- */
+
+.gallery-btn {
+  padding: 5px;
+  margin: 0 auto 20px;
+  width: 85%;
+  background-color: rgb(24, 83, 192);
+  box-shadow: 0 2px 10px rgba(111, 111, 111, 0.5);
+  border-radius: 4px;
+}
+
+.gallery-btn:hover {
+  background-color: rgb(82, 121, 228);
+  box-shadow: 1px 6px 15px rgba(111, 111, 111, 0.5);
+}
+
+.gallery-btn button {
+  color: white;
+}
+
+/* --------------Profile-------------- */
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-btn {
+  margin: 0 20px 10px;
+  display: inline-grid;
+  background-color: rgb(170, 199, 175);
 }
 
 @media (max-width: 900px) {

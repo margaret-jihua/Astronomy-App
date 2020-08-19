@@ -13,17 +13,17 @@
 
                 <p><%= f.date %></p>
 
-                <a href="/profile/<%= f.id %>">
-                    <button>View</button>
-                </a>
-
-                <form method="POST" action="/profile/<%= f.id %>/?_method=DELETE"">
-                    <input hidden type="text" name="id" value="<%= f.id %>">
-                    <button type="submit">Delete</button>
-                </form>
-
+                <div class="flex">
+                    <a class="profile-btn" href="/profile/<%= f.id %>">
+                        <button>View</button>
+                    </a>
+                    <form class="profile-btn" method="POST" action="/profile/<%= f.id %>/?_method=DELETE"">
+                        <input hidden type="text" name="id" value="<%= f.id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
             </div>
-        <%}) %> 
+        <% }) %> 
     </div>
 </div>
 
