@@ -70,7 +70,7 @@ app.get('/', (req, res) => {
 // Search 
 app.get('/search', (req, res) => {
   let date = moment().format('YYYY-MM-DD')
-  res.render('search',{date})
+  res.render('search', {date})
 })
 
 // Gallery
@@ -91,6 +91,8 @@ app.get('/detail', (req, res) => {
   let url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`
   axios.get(url)
   .then( apodData => {
+    // get info from API
+    // get comments from DB
     db.comment.findAll({
       where: {date: date},
       include: [db.user]        
@@ -108,6 +110,7 @@ app.get('/detail', (req, res) => {
 })
 
 // Detail POST
+// Add comment in Detail page
 app.post('/detail', isLoggedIn, (req, res) => {
   let date = req.query.date
   let comment = req.body.comment

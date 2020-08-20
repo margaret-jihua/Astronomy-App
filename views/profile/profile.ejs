@@ -24,7 +24,6 @@
                         <button>View</button>
                     </a>
                     <form class="profile-btn" method="POST" action="/profile/<%= f.id %>/?_method=DELETE"">
-                        <input hidden type="text" name="id" value="<%= f.id %>">
                         <button type="submit">Delete</button>
                     </form>
                 </div>
@@ -42,9 +41,11 @@
                     <div>
                         <span><%= c.date %></span>
                         <span><%= c.content %></span>
+                        <form class="secondary-content" method="POST" action="/profile/comment/<%= c.id %>/?_method=DELETE">
+                            <button type="submit">Delete</button>
+                        </form>
                         <a href="#!" class="secondary-content">Edit</a>
-                        <a href="#!" class="secondary-content">View</a>
-                        <a href="#!" class="secondary-content">Delete</a>
+                        <a href="/detail?date=<%= c.date %>/#comment" class="secondary-content"><button>View</button></a>
                     </div>
                 </li>
             <%}) %> 

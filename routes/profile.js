@@ -7,6 +7,7 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 router.use(methodOverride('_method'));
 
 // Profile 
+// Display user's faves pictures and comments
 router.get('/', isLoggedIn, (req, res) => {
     let userName = req.user.name;
     db.user.findOne({
@@ -21,11 +22,11 @@ router.get('/', isLoggedIn, (req, res) => {
     })
 });
 
-// Add to Favorite form, add date&url to faves, related with user
+// [Add to Favorite] form in Detail Page
+// Add date&url to faves, related with user
 router.post('/', isLoggedIn, (req, res) => {
     let date = req.body.date
     let url = req.body.url
-    // console.log(date, url);
     db.user.findOne({
         where: {id: req.user.id }
     })
@@ -57,47 +58,35 @@ router.post('/', isLoggedIn, (req, res) => {
     })
 })
 
-// delete the picture in profile 
+// delete the picture in profile collection
 router.delete('/:id', isLoggedIn, (req, res) => {
-    db.user.findOne({
-        where: {id: req.user.id}
-    })
-    .then(user => {
+    // db.user.findOne({
+    //     where: {id: req.user.id}
+    // })
+    // .then(user => {
         db.fave.destroy({
             where: {id: req.params.id}
         })
-        .then(fave => {
+        .then(() => {
             res.redirect('/profile')
         })
         .catch(err => {
             console.log(err);
         })
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    // })
+    // .catch(err => {
+    //     console.log(err);
+    // })
 })
 
-// show
-// router.get('/:id', isLoggedIn, (req, res) => {
-//     db.user.findOne({
-//         where: {id: req.user.id}
-//     })
-//     .then(user => {
-//         db.fave.findOne({
-//             where: {id: req.params.id}
-//         })
-//         .then(fave =>{
-//             res.render('profile/show', {fave})
-//         })
-//         .catch(err => {
-//             console.log(err);
-//         })
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     })
-// })
-
+// delete the comment in profile comments check if also delete in detail page
+router.delete('/comment/:id', (req, res) => {
+    db.comment.destroy({
+        where: {id: req.params.id}
+    })
+    .then(() => {
+        res.redirect('/profile#comments')
+    })
+})
 
 module.exports = router;
