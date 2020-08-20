@@ -1,18 +1,12 @@
 <div class="container">
-    <div class="row">
-        <div class="col s6">
+    <div class="row" style="margin-top: 20px;">
+        <div class="col s4">
             <a class="left btn-floating btn-large blue-grey" href="#comment">
                 <i class="material-icons">comment</i>
             </a>
         </div>
-        <div class="col s6">
-            <h5 class="right"><%= apod.date %></h5>
-        </div>
-        <div class="col s12 center">
-            <h5><%= apod.title %></h5>
-        </div>
-        <div class="col s12 center">
-            <form class="" method="POST" action="/profile">
+        <div class="col s4">
+            <form class="center" method="POST" action="/profile">
                 <input hidden type="date" id="date" name="date" value="<%= apod.date %>">
                 <% if (apod.hdurl) { %>
                     <input hidden type="text" id="url" name="url" value="<%= apod.hdurl %>">
@@ -21,6 +15,12 @@
                 <% } %> 
                 <button class="fave-btn" type="submit">Add to Favorite</button>
             </form>
+        </div>
+        <div class="col s4">
+            <h5 class="right"><%= apod.date %></h5>
+        </div>
+        <div class="col s12 center">
+            <h5><%= apod.title %></h5>
         </div>
     </div>
     

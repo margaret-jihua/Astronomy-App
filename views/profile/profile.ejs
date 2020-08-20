@@ -1,7 +1,12 @@
+<span class="left">Welcome, <%= userName %></span>
+<ul class="tabs tabs-transparent center">
+    <li class="tab"><a href="#collection">Collection</a></li>
+    <li class="tab"><a href="#comments">Comments</a></li>
+    <li class="tab"><a href="#slide-show">Slide Show</a></li>
+</ul>
 
-<h5>Welcome, <%= userName %> </h5>
-<div class="center">
-    <h4>My Gallery</h4>
+<div id="collection" class="col s12 center">
+    <h4>My Collection</h4>
     <div class="row">
         <% faves.forEach( f =>{ %>
             <div class="col l3 m6 s12">
@@ -27,5 +32,26 @@
     </div>
 </div>
 
+<div id="comments" class="col s12">
+    <ul class="collection with-header">
+        <li class="collection-header center"><h4>My Comments</h4></li>
+        <li class="collection-item">
+            <div>comments
+                <a href="#!" class="secondary-content">Edit</a>
+                <a href="#!" class="secondary-content">View</a>
+                <a href="#!" class="secondary-content">Delete</a>
+            </div>
+        </li>
+        <li class="collection-item">
+            <div>comments
+                <a href="#!" class="secondary-content">Edit</a>
+                <a href="#!" class="secondary-content">View</a>
+                <a href="#!" class="secondary-content">Delete</a>
+            </div>
+        </li>
+    </ul>
+</div>
 
-
+<div id="slide-show" class="col s12">
+    Slide-Show
+</div>
