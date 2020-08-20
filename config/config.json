@@ -12,6 +12,7 @@
   "production": {
     "database": "astronomy_app_production",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "use_env_variable": "postgres://nyvoxmedlphmeu:bf118489aa01b4ae28bc09b3746aece8395040f84cb0e308b1af4463587d12c2@ec2-52-22-94-132.compute-1.amazonaws.com:5432/dfqke2h3qj0587"
   }
 }

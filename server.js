@@ -85,6 +85,19 @@ app.get('/gallery', (req, res) => {
   })
 })
 
+// Mars
+app.get('/Mars', (req, res) => {
+  let yesterday = moment().subtract(1, "days").format('YYYY-MM-DD')
+  let marsURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2020-08-01&api_key=${API_KEY}`
+  axios.get(marsURL)  
+  .then(marsData => {
+    res.render('mars', { mars: marsData.data })
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+
 // Detail GET
 app.get('/detail', (req, res) => {
   let date = req.query.date

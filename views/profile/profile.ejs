@@ -44,8 +44,9 @@
                         <form class="secondary-content" method="POST" action="/profile/comment/<%= c.id %>/?_method=DELETE">
                             <button type="submit">Delete</button>
                         </form>
-                        <a href="#!" class="secondary-content">Edit</a>
-                        <a href="/detail?date=<%= c.date %>/#comment" class="secondary-content"><button>View</button></a>
+                        <a href="/detail?date=<%= c.date %>#comment" class="secondary-content">
+                            <button>View</button>
+                        </a>
                     </div>
                 </li>
             <%}) %> 
