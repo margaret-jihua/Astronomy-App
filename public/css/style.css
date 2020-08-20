@@ -26,18 +26,6 @@ button:focus {
   background: none;
 }
 
-/* .row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
-
-.column {
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
-} */
-
 .cover {
   object-fit: cover;
   width: 100%;
@@ -107,6 +95,15 @@ button:focus {
 .fave-btn:hover {
   background-color: rgb(252, 52, 52, 0.8);
   box-shadow: 1px 6px 15px rgba(140, 140, 140, 0.5);
+}
+
+.comment-box {
+  padding: 10px;
+  background-color: rgba(37, 50, 124, 0.6);
+}
+
+.comment-box input{
+  color: white;
 }
 
 /* --------------Profile-------------- */

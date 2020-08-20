@@ -85,16 +85,40 @@ app.get('/gallery', (req, res) => {
   })
 })
 
-// Detail 
+// Detail GET
 app.get('/detail', (req, res) => {
   let date = req.query.date
   let url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`
   axios.get(url)
   .then( apodData => {
-    res.render('detail', {apod: apodData.data,})
-  })
-  .catch(err => {
-    console.log(err);
+    db.comment.findAll({
+      where: {date: date},
+      include: [db.user]        
+    })
+    .then(comments => {
+        res.render('detail', {apod: apodData.data, comments})
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    })
+})
+
+// Detail POST
+app.post('/detail', isLoggedIn, (req, res) => {
+  let date = req.query.date
+  let comment = req.body.comment
+  let userId = req.user.id
+  console.log(date, comment, userId);
+  db.comment.create({
+    date: date,
+    content: comment,
+    userId: userId
+  }).then(() => {
+    res.redirect(`/detail?date=${date}#comment`)
   })
 })
 

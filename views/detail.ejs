@@ -1,18 +1,30 @@
-<div>
-    <div class="center">
-        <h5><%= apod.title %></h5>
-        <h5><%= apod.date %></h5>
-        <form method="POST" action="/profile">
-            <input hidden type="date" id="date" name="date" value="<%= apod.date %>">
-            <% if (apod.hdurl) { %>
-                <input hidden type="text" id="url" name="url" value="<%= apod.hdurl %>">
-            <% } else { %> 
-                <input hidden type="text" id="url" name="url" value="<%= apod.url %>">
-            <% } %> 
-            <button class="fave-btn" type="submit">Add to Favorite</button>
-        </form>
+<div class="container">
+    <div class="row">
+        <div class="col s6">
+            <a class="left btn-floating btn-large blue-grey" href="#comment">
+                <i class="material-icons">comment</i>
+            </a>
+        </div>
+        <div class="col s6">
+            <h5 class="right"><%= apod.date %></h5>
+        </div>
+        <div class="col s12 center">
+            <h5><%= apod.title %></h5>
+        </div>
+        <div class="col s12 center">
+            <form class="" method="POST" action="/profile">
+                <input hidden type="date" id="date" name="date" value="<%= apod.date %>">
+                <% if (apod.hdurl) { %>
+                    <input hidden type="text" id="url" name="url" value="<%= apod.hdurl %>">
+                <% } else { %> 
+                    <input hidden type="text" id="url" name="url" value="<%= apod.url %>">
+                <% } %> 
+                <button class="fave-btn" type="submit">Add to Favorite</button>
+            </form>
+        </div>
     </div>
-    <div class="container center">
+    
+    <div class="center">
         <% if (apod.hdurl && apod.media_type === 'image') { %> 
             <img class="cover" src="<%= apod.hdurl %>" alt="<%= apod.date %> ">
         <% } else if (apod.url && apod.media_type === 'video') { %> 
@@ -21,13 +33,29 @@
             <img class="cover" src="https://http.cat/204" alt="Cannot Find Content">
         <% } %> 
     </div>
-    <div class="container">
+
+    <div class="">
         <% if(apod.copyright) { %> 
             <p class="center">Image credit & copyright: <%= apod.copyright %></p>
         <% } %> 
         <p>Explanation: <%= apod.explanation %></p>
     </div>
-    <div class="container">
-        <h6>Commend: </h6>
+
+    <div id="comment" class="comment-box">
+        <h6>Comments: </h6>
+        <% if (comments.length) { %> 
+            <% comments.forEach( c => { %>
+                <p><%= c.user.name %>: <%= c.content %></p>
+                <hr>
+            <% }) %>
+        <% } else { %> 
+        <div class="comment-item">
+            <i style="color: grey;">No comments yet. Leave a comment! >>>> </i>
+        </div>
+    <% } %> 
+        <form method="POST" action="/detail?date=<%= apod.date %>#comment">
+            <input type="text" name="comment" placeholder="Add a comment..." required>
+            <input type="submit">
+        </form>
     </div>
 </div>
