@@ -1,4 +1,5 @@
 <span class="left">Welcome, <%= userName %></span>
+
 <ul class="tabs tabs-transparent center">
     <li class="tab"><a href="#collection">Collection</a></li>
     <li class="tab"><a href="#comments">Comments</a></li>
@@ -8,7 +9,7 @@
 <div id="collection" class="col s12 center">
     <h4>My Collection</h4>
     <div class="row">
-        <% faves.forEach( f =>{ %>
+        <% user.faves.forEach( f =>{ %>
             <div class="col l3 m6 s12">
                 <% if (f.url.substring(8,11) === 'www') { %> 
                     <iframe class="cover" src="<%= f.url %>" height="200"></iframe>
@@ -19,7 +20,7 @@
                 <p><%= f.date %></p>
 
                 <div class="flex">
-                    <a class="profile-btn" href="/profile/<%= f.id %>">
+                    <a class="profile-btn" href="/detail?date=<%= f.date %>">
                         <button>View</button>
                     </a>
                     <form class="profile-btn" method="POST" action="/profile/<%= f.id %>/?_method=DELETE"">
@@ -32,23 +33,24 @@
     </div>
 </div>
 
-<div id="comments" class="col s12">
+<div id="comments" class="col s12 container">
     <ul class="collection with-header">
         <li class="collection-header center"><h4>My Comments</h4></li>
-        <li class="collection-item">
-            <div>comments
-                <a href="#!" class="secondary-content">Edit</a>
-                <a href="#!" class="secondary-content">View</a>
-                <a href="#!" class="secondary-content">Delete</a>
-            </div>
-        </li>
-        <li class="collection-item">
-            <div>comments
-                <a href="#!" class="secondary-content">Edit</a>
-                <a href="#!" class="secondary-content">View</a>
-                <a href="#!" class="secondary-content">Delete</a>
-            </div>
-        </li>
+        <% if (user.comments.length) { %> 
+            <% user.comments.forEach(c => { %> 
+                <li class="collection-item">
+                    <div>
+                        <span><%= c.date %></span>
+                        <span><%= c.content %></span>
+                        <a href="#!" class="secondary-content">Edit</a>
+                        <a href="#!" class="secondary-content">View</a>
+                        <a href="#!" class="secondary-content">Delete</a>
+                    </div>
+                </li>
+            <%}) %> 
+        <% } else { %> 
+            <li class="collection-item"><div>You have no comments yet</div></li>
+        <% }%>
     </ul>
 </div>
 

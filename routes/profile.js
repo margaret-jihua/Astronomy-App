@@ -10,16 +10,11 @@ router.use(methodOverride('_method'));
 router.get('/', isLoggedIn, (req, res) => {
     let userName = req.user.name;
     db.user.findOne({
-        where: {id: req.user.id}
+        where: {id: req.user.id},
+        include: [db.fave, db.comment]
     })
     .then(user =>{
-        user.getFaves()
-        .then(faves => {
-            res.render('profile/profile', {userName, faves});
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        res.render('profile/profile', {userName, user});
     })
     .catch(err => {
         console.log(err);
@@ -84,25 +79,25 @@ router.delete('/:id', isLoggedIn, (req, res) => {
 })
 
 // show
-router.get('/:id', isLoggedIn, (req, res) => {
-    db.user.findOne({
-        where: {id: req.user.id}
-    })
-    .then(user => {
-        db.fave.findOne({
-            where: {id: req.params.id}
-        })
-        .then(fave =>{
-            res.render('profile/show', {fave})
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    })
-    .catch(err => {
-        console.log(err);
-    })
-})
+// router.get('/:id', isLoggedIn, (req, res) => {
+//     db.user.findOne({
+//         where: {id: req.user.id}
+//     })
+//     .then(user => {
+//         db.fave.findOne({
+//             where: {id: req.params.id}
+//         })
+//         .then(fave =>{
+//             res.render('profile/show', {fave})
+//         })
+//         .catch(err => {
+//             console.log(err);
+//         })
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     })
+// })
 
 
 module.exports = router;
