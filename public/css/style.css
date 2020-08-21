@@ -16,10 +16,23 @@ footer {
   color: rgb(80, 80, 80);
 }
 
+/* --------------Used On Most of Gallery Pics-------------- */
+
 .cover {
   object-fit: cover;
   width: 100%;
 }
+
+/* --------------Home Page-------------- */
+
+.info {
+  position: absolute;
+  top: 350px;
+  right: 10%;
+}
+
+
+/* --------------Search & Auth Form-------------- */
 
 .registration {
   background-color: rgb(179, 217, 219, 0.8);
@@ -133,7 +146,7 @@ footer {
 }
 
 .profile-btn {
-  width: 100px;
+  width: 150px;
   box-shadow: 0 0 1em grey;
 }
 

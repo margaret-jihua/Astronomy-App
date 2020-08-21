@@ -58,34 +58,57 @@ router.post('/', isLoggedIn, (req, res) => {
     })
 })
 
-// delete the picture in profile collection
+// Delete the picture in profile collection
+// by deleteling the association in usersFaves table
 router.delete('/:id', isLoggedIn, (req, res) => {
-    // db.user.findOne({
-    //     where: {id: req.user.id}
-    // })
-    // .then(user => {
-        db.fave.destroy({
-            where: {id: req.params.id}
-        })
-        .then(() => {
-            res.redirect('/profile')
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    // })
+    db.usersFaves.destroy({
+        where: {
+            faveId: req.params.id,
+            userId: req.user.id
+        }
+    })
+    .then(() => {
+        res.redirect('/profile')
+    })
+    .catch(err => {
+        console.log(err);
+    })    
 })
 
-// delete the comment in profile comments check if also delete in detail page
+// Delete the comment in profile comments 
+// Check if also delete in detail page
 router.delete('/comment/:id', (req, res) => {
     db.comment.destroy({
         where: {id: req.params.id}
     })
     .then(() => {
         res.redirect('/profile#comments')
+    })
+})
+
+// Edit page to get new username
+router.get('/edit', isLoggedIn, (req, res) => {
+    db.user.findOne({
+        where:{ id: req.user.id }
+    })
+    .then(user => {
+        res.render('profile/edit', {user})
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
+
+
+// PUT method to update user's name in database
+router.put('/edit/:id', isLoggedIn, (req, res) => {
+    db.user.update(
+        { name: req.body.newUserName}, 
+        { where: { id: req.params.id }    
+    })
+    .then(userNameChanged => {
+        console.log(userNameChanged);
+        res.redirect('/profile')
     })
 })
 

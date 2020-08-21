@@ -1,0 +1,10 @@
+<div class="registration">
+    <h5>Hello <%= user.name %></h5>
+    <form method="POST" action="/profile/edit/<%= user.id %>/?_method=PUT">
+        <div class="input-field">
+            <label for="newUserName">New Username</label>      
+            <input id="newUserName" name="newUserName" type="text" required>
+        </div>
+        <button class="btn waves-effect waves-light blue lighten-2" type="submit">Submit</button>
+    </form>
+</div>
