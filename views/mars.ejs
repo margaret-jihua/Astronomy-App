@@ -33,3 +33,26 @@
     </ul>
   </div>
       
+
+<div class="row">
+    <div class="col s12">
+        <img class="cover" src="https://mars.nasa.gov/system/news_items/main_images/8442_PIA23240-16.jpg"> 
+        <div class="right-align">
+            <h3>See Mars Rover Photoes Yesterday!</h3>
+            <h5 class="light grey-text text-lighten-3">Taken By Curiosity</h5>
+        </div>
+    </div>
+
+    <div class="col s12">
+        <% if (mars.photos.length) { %> 
+            <% for(let i = 0; i < 10; i+=2) { %>
+                    <img class="cover" src="<%= mars.photos[i].img_src %>">
+            <% } %> 
+        <% } else { %> 
+            <h5>Sorry, no photos on this day</h5>
+            <img src="https://http.cat/204" alt="no content found">
+        <% } %> 
+    </div>
+
+</div>
+

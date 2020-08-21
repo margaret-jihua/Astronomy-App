@@ -1,13 +1,20 @@
-<!-- <div class="form-box"> -->
+<div class="auth-background">
+
   <form class="registration" action="/auth/login" method="POST">
-    <h4>Log In</h4>
-    <label for="auth-email">Email</label>
-    <input id="auth-email" type="email" name="email">
+    <h4 class="center">Log In</h4>
 
-    <label for="auth-password">Password</label>
-    <input id="auth-password" type="password" name="password">
+    <div class="input-field">
+      <label for="auth-email">Email</label>
+      <input id="auth-email" type="email" name="email" class="validate">
+    </div>
 
-    <input class="" type="submit" value="Log In">
+    <div class="input-field">
+      <label for="auth-password">Password</label>
+      <input id="auth-password" type="password" name="password" class="validate">
+    </div>
+
+    <button class="auth-btn btn waves-effect waves-light indigo lighten-2" type="submit">Log In</button>
   </form>
-<!-- </div> -->
+
+</div>
 

@@ -11,9 +11,9 @@
             <div>
                 <p><%= g.date %></p>
                 <p><%= g.title %></p>
-                <form class="gallery-btn" method="GET" action="/detail">
+                <form method="GET" action="/detail">
                     <input hidden type="date" id="date" name="date" value="<%= g.date %>">
-                    <button type="submit">See More Information</button>
+                    <button class="gallery-btn btn waves-effect waves-light brown lighten-3" type="submit">See More Information</button>
                 </form>
             </div>
             

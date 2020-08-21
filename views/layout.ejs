@@ -89,13 +89,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // var elems = document.querySelectorAll('.sidenav');
-        // var instances = M.Sidenav.init(elems, {});
-        // var instance = M.Tabs.init(el, options);
-        // var elems = document.querySelectorAll('.slider');
-        // var instances = M.Slider.init(elems, options);
+        // var sideNavElems = document.querySelectorAll('.sidenav');
+        // var sideNavInstances = M.Sidenav.init(sideNavElems, {});
+        // var tabElems = document.querySelectorAll('.tabs');
+        // console.log('-----------------------');
+        // console.log(el);
+        // var tabInstance = M.Tabs.init(tabElems);        
+        var elems = document.querySelectorAll('.slider');
+        var instances = M.Slider.init(elems);
         M.AutoInit();
-      });
+      });      
     </script>
+    <!-- <script src="/public/js/app.js"></script> -->
   </body>
 </html>

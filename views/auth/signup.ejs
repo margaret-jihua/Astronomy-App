@@ -1,13 +1,26 @@
-<form class="registration" action="/auth/signup" method="POST">
-  <h4>Sign Up</h4>
-  <label for="new-email">Email</label>
-  <input id="new-email" type="email" name="email">
+<div class="auth-background">
 
-  <label for="new-name">Name</label>
-  <input id="new-name" type="text" name="name">
+  <form class="registration" action="/auth/signup" method="POST">
 
-  <label for="new-password">Password</label>
-  <input id="new-password" type="password" name="password">
+    <h4 class="center">Sign Up</h4>
 
-  <input type="submit" value="Create My Account">
-</form>
+    <div class="input-field">
+      <label for="new-email">Email</label>
+      <input id="new-email" type="email" name="email">
+    </div>
+
+    <div class="input-field">
+      <label for="new-name">Name</label>
+      <input id="new-name" type="text" name="name">
+    </div>
+
+    <div class="input-field">
+      <label for="new-password">Password</label>
+      <input id="new-password" type="password" name="password">
+    </div>
+
+    <button class="auth-btn btn waves-effect waves-light indigo lighten-2" type="submit">Create My Account</button>
+
+  </form>
+</div>
+
