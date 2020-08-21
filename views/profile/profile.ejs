@@ -2,14 +2,16 @@
 
 <ul class="tabs tabs-transparent center">
     <li class="tab"><a href="#collection">Collection</a></li>
-    <li class="tab"><a href="#comments">Comments</a></li>
-    <li class="tab"><a href="#slide-show">Slide Show</a></li>
+        <li class="tab"><a href="#slide-show">Slide Show</a></li>
+        <li class="tab"><a href="#comments">Comments</a></li>
 </ul>
 
+<!-- **********************************Collection********************************** -->
+
 <div id="collection" class="col s12 center">
-    <h4>My Collection</h4>
-    <div class="row">
-        <% user.faves.forEach( f =>{ %>
+    <!-- <h4>My Collection</h4> -->
+    <div class="row">        
+        <% user.faves.forEach( f => { %>
             <div class="col l3 m6 s12">
                 <% if (f.url.substring(8,11) === 'www') { %> 
                     <iframe class="cover" src="<%= f.url %>" height="200"></iframe>
@@ -19,12 +21,12 @@
 
                 <p><%= f.date %></p>
 
-                <div class="flex">
-                    <a class="profile-btn" href="/detail?date=<%= f.date %>">
-                        <button>View</button>
+                <div class="flex-button">
+                    <a href="/detail?date=<%= f.date %>">
+                        <button class="profile-btn btn waves-effect deep-orange lighten-2">View</button>
                     </a>
-                    <form class="profile-btn" method="POST" action="/profile/<%= f.id %>/?_method=DELETE"">
-                        <button type="submit">Delete</button>
+                    <form method="POST" action="/profile/<%= f.id %>/?_method=DELETE"">
+                        <button class="profile-btn btn waves-effect grey darken-1" type="submit">Delete</button>
                     </form>
                 </div>
             </div>
@@ -32,30 +34,49 @@
     </div>
 </div>
 
-<div id="comments" class="col s12 container">
-    <ul class="collection with-header">
-        <li class="collection-header center"><h4>My Comments</h4></li>
-        <% if (user.comments.length) { %> 
-            <% user.comments.forEach(c => { %> 
-                <li class="collection-item">
-                    <div>
-                        <span><%= c.date %></span>
-                        <span><%= c.content %></span>
-                        <form class="secondary-content" method="POST" action="/profile/comment/<%= c.id %>/?_method=DELETE">
-                            <button type="submit">Delete</button>
-                        </form>
-                        <a href="/detail?date=<%= c.date %>#comment" class="secondary-content">
-                            <button>View</button>
-                        </a>
-                    </div>
-                </li>
-            <%}) %> 
-        <% } else { %> 
-            <li class="collection-item"><div>You have no comments yet</div></li>
-        <% }%>
-    </ul>
-</div>
+<!-- **********************************Slide Show********************************** -->
 
 <div id="slide-show" class="col s12">
-    Slide-Show
+    <div class="slider">
+        <ul class="slides">
+            <% user.faves.forEach( f => { %>
+                <li>
+                    <% if (f.url.substring(8,11) !== 'www') { %> 
+                        <img src="<%= f.url %>" alt="<%= f.date %>">
+                    <% } %> 
+                    <div class="caption left-align">
+                        <h5 class="light grey-text text-lighten-3"><%= f.date %></h5>
+                    </div>
+                </li>
+            <% }) %> 
+        </ul>
+    </div>
+</div>
+
+<!-- **********************************Comments********************************** -->
+
+<div id="comments" class="col s12 container ">
+    <!-- <h4 class="center">My Comments</h4> -->
+    <div class="comment-box">        
+        <% if (user.comments.length) { %> 
+            <% user.comments.forEach(c => { %> 
+                <div class="comment-item my-comment-item">
+                    <div class="col s10">
+                        <label>APOD Date: <%= c.date %></label>
+                        <p><%= c.content %></p>
+                    </div>                    
+                    <div class="col s2" >
+                       <a href="/detail?date=<%= c.date %>#comment">
+                            <button class="profile-btn btn waves-effect deep-orange lighten-2">View</button>
+                        </a> 
+                        <form method="POST" action="/profile/comment/<%= c.id %>/?_method=DELETE">
+                            <button class="profile-btn btn waves-effect grey darken-1" type="submit">Delete</button>
+                        </form>                        
+                    </div>                    
+                </div>
+            <%}) %> 
+        <% } else { %> 
+            <h5>You have no comments yet.</h5>
+        <% }%>
+    </div>
 </div>
