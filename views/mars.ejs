@@ -1,58 +1,51 @@
-<h3>See Mars Rover Photoes Taken By Curiosity Yesterday</h3>
+<!-- <h3>See Mars Rover Photoes Taken By Curiosity Yesterday</h3> -->
 
 <div class="slider">
     <ul class="slides">
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
-        <div class="caption left-align">
-          <h3>Left Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
-        <div class="caption right-align">
-          <h3>Right Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-    </ul>
-  </div>
-      
-
-<div class="row">
-    <div class="col s12">
-        <img class="cover" src="https://mars.nasa.gov/system/news_items/main_images/8442_PIA23240-16.jpg"> 
-        <div class="right-align">
-            <h3>See Mars Rover Photoes Yesterday!</h3>
-            <h5 class="light grey-text text-lighten-3">Taken By Curiosity</h5>
-        </div>
-    </div>
-
-    <div class="col s12">
+        <li>
+            <img src="https://mars.nasa.gov/system/news_items/main_images/8442_PIA23240-16.jpg"> <!-- front image -->
+            <div class="caption center-align">
+                <h4>See Mars Rover Photoes Last Week!</h4>
+                <h5 class="light grey-text text-lighten-3">Taken By Curiosity</h5>
+            </div>
+        </li>
         <% if (mars.photos.length) { %> 
-            <% for(let i = 0; i < 10; i+=2) { %>
-                    <img class="cover" src="<%= mars.photos[i].img_src %>">
+            <% for (let i = 0; i < 10; i+=2) { %>
+                <% if (mars.photos[i]) { %> 
+                    <li>
+                        <img src="<%= mars.photos[i].img_src %>"> <!-- Mars images -->
+                        <div class="caption right-align">
+                            <h4><%= mars.photos[i].camera.full_name %></h4>
+                            <h5 class="light grey-text text-lighten-3">
+                                Earth Date: <%= mars.photos[i].earth_date %>
+                            </h5>
+                        </div>
+                    </li>
+                <% } %> 
             <% } %> 
         <% } else { %> 
-            <h5>Sorry, no photos on this day</h5>
-            <img src="https://http.cat/204" alt="no content found">
+            <li>
+                <img src="https://http.cat/204" alt="no content found">
+                <div class="caption right-align">
+                    <h4>Sorry, no photos on this day</h4>
+                </div>
+            </li>
+        <% } %> 
+    </ul>
+</div>
+      
+<% if (mars.photos.length) { %> 
+    <div class="row">
+        <% for (let i = 1; i < 10; i+=2) { %>
+            <% if(mars.photos[i]) { %> 
+                <div class="col s12">
+                    <img class="cover" src="<%= mars.photos[i].img_src %> " height="400">
+                    <!-- <div class="right"> -->
+                    <div class="above right"><%= mars.photos[i].camera.full_name %></div>
+                    <!-- </div> -->
+                </div>
+            <% } %> 
         <% } %> 
     </div>
-
-</div>
+<% } %> 
 

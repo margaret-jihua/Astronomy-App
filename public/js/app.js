@@ -5,3 +5,5 @@
 //     console.log(date);
 //     document.getElementById("arrow-back").setAttribute("href", `/detail?date=${p}`);
 // })
+
+console.log('Hello');

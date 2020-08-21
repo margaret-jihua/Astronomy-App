@@ -1,13 +1,16 @@
 <div class="">
     <% if (apod.hdurl && apod.media_type === 'image') { %> 
-        <img class="cover" src="<%= apod.hdurl %>" alt="astronomy picture of today" height="600">
+        <img class="cover" src="<%= apod.hdurl %>" alt="astronomy picture of today" height="500">
     <% } else if (apod.url && apod.media_type === 'video') { %> 
-        <iframe class="cover" src="<%= apod.url %>" height="600"></iframe>
+        <iframe class="cover" src="<%= apod.url %>" height="500"></iframe>
     <% } else { %> 
         <img src="https://http.cat/204" alt="Cannot Find Content">
     <% } %> 
-    <p><%= apod.date %></p>
-    <p><%= apod.title %></p>
+    <div class="above center">
+        <span><%= apod.date %></span>
+        <span><%= apod.title %></span>
+    </div>
+    
     <form method="GET" action="/detail">
         <input hidden type="date" id="date" name="date" value="<%= apod.date %>">
         <button type="submit">See More Information</button>

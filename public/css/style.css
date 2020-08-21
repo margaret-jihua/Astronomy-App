@@ -115,7 +115,16 @@ footer {
   width: 200px;
 }
 
-/* --------------Profile-------------- */
+/* --------------Mars Page-------------- */
+
+.above {
+  position: relative;
+  bottom: 100px;
+  right: 100px;
+  font-size: 2rem;
+}
+
+/* --------------Profile Page-------------- */
 
 .flex-button {
   margin-bottom: 30px;
