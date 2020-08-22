@@ -21,13 +21,13 @@
         </div>
 
         <div class="col s4">
-            <h5 id="apod-date" class="right"><%= apod.date %></h5>
+            <h5 class="right"><%= apod.date %></h5>
         </div>
 
         <div class="col s12 center" style="font-size: 2rem;">
-            <a id="arrow-back" class="btn-floating btn-large N/A transparent" href=""><i class="material-icons">arrow_back</i></a>
+            <a class="btn-floating btn-large N/A transparent" href="/detail?date=<%= days.yesterday %> "><i class="material-icons">arrow_back</i></a>
             <span ><%= apod.title %></span>
-            <a id="arrow-forward" class="btn-floating btn-large N/A transparent" href=""><i class="material-icons">arrow_forward</i></a>
+            <a class="btn-floating btn-large N/A transparent" href="/detail?date=<%= days.tomorrow %> "><i class="material-icons">arrow_forward</i></a>
         </div>
     </div>
     

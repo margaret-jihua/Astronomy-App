@@ -102,6 +102,9 @@ app.get('/Mars', (req, res) => {
 // Detail GET
 app.get('/detail', (req, res) => {
   let date = req.query.date
+  let yesterday = moment(date).subtract(1,'days').format('YYYY-MM-DD')
+  let tomorrow = moment(date).add(1, 'days').format('YYYY-MM-DD')
+  let days = {yesterday: yesterday, tomorrow: tomorrow}
   let url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`
   axios.get(url)
   .then( apodData => {
@@ -112,7 +115,7 @@ app.get('/detail', (req, res) => {
       include: [db.user]        
     })
     .then(comments => {
-        res.render('detail', {apod: apodData.data, comments})
+        res.render('detail', {apod: apodData.data, comments, days})
       })
       .catch(err => {
         console.log(err);
