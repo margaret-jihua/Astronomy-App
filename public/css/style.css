@@ -23,13 +23,12 @@ footer {
   width: 100%;
 }
 
-/* ----------Used for displaying two bottons at the same line---------- */
+/* -----------------Used for inline-bottons----------------- */
 /* --------------Home & Gallery & profile Pages-------------- */
 
-.flex-buttons {
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: space-around;
+.gallery-btn {
+  width: 100%;
+  box-shadow: 0 0 0.3rem lightgrey;
 }
 
 /* --------------Home Page-------------- */
@@ -92,11 +91,6 @@ footer {
 
 /* --------------Gallery Page-------------- */
 
-.gallery-btn {
-  width: 100%;
-  box-shadow: 0 0 0.3rem lightgrey;
-}
-
 .gallery-bottom {
   display: flex;
   justify-content: space-evenly;
@@ -108,7 +102,6 @@ footer {
 .fave-btn{
   margin: 12px auto;
   width: 260px;
-  color: black;
   box-shadow: 0 0 1rem pink;
 }
 
@@ -128,15 +121,13 @@ footer {
    padding: 18px;
 }
 
-.add-comment input{
+.add-comment input {
   color: white;
-  /* background-color: cornflowerblue;
-  border-radius: 50px; */
 }
 
-.comment-btn {
-  color: black;
-  width: 200px;
+.add-comment button {
+  position: relative;
+  top: 25px;
 }
 
 /* --------------Mars Page-------------- */
@@ -150,15 +141,15 @@ footer {
 
 /* --------------Profile Page-------------- */
 
-.profile-btn {
-  width: 150px;
-  box-shadow: 0 0 0.3rem lightgrey;
-}
-
 .my-comment-item {
   display: flex;
   justify-content: space-between;
   padding: 30px;
+}
+
+.profile-btn {
+  width: 100px;
+  box-shadow: 0 0 0.3rem lightgrey;
 }
 
 @media (max-width: 900px) {
