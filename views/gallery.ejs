@@ -8,13 +8,28 @@
             <% } else { %> 
                 <img class="cover" src="https://http.cat/204" alt="Cannot Find Content" height="300">
             <% } %> 
-            <div>
                 <p><%= g.date %></p>
                 <p><%= g.title %></p>
-                <form method="GET" action="/detail">
-                    <input hidden type="date" id="date" name="date" value="<%= g.date %>">
-                    <button class="gallery-btn btn waves-effect waves-light brown lighten-3" type="submit">See More Information</button>
-                </form>
+
+            <div class="row">
+                <div class="col s6">
+                    <form method="POST" action="/profile">
+                        <input hidden type="date" id="date" name="date" value="<%= g.date %>">
+                        <% if (g.hdurl) { %>
+                            <input hidden type="text" id="url" name="url" value="<%= g.hdurl %>">
+                        <% } else { %> 
+                            <input hidden type="text" id="url" name="url" value="<%= g.url %>">
+                        <% } %> 
+                        <button class="gallery-btn btn waves-effect waves-light red lighten-2" type="submit">Add to Favorite</button>
+                    </form>  
+                </div>
+                <div class="col s6">
+                    <form method="GET" action="/detail">
+                        <input hidden type="date" id="date" name="date" value="<%= g.date %>">
+                        <button class="gallery-btn btn waves-effect waves-light deep-orange lighten-2" type="submit">View Information</button>
+                    </form>
+                </div>
+                
             </div>
             
         </div>

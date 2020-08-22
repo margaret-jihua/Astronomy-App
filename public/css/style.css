@@ -23,6 +23,15 @@ footer {
   width: 100%;
 }
 
+/* ----------Used for displaying two bottons at the same line---------- */
+/* --------------Home & Gallery & profile Pages-------------- */
+
+.flex-buttons {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
 /* --------------Home Page-------------- */
 
 .info {
@@ -31,6 +40,10 @@ footer {
   right: 10%;
 }
 
+.info button {
+  box-shadow: 0 0 0.2rem lightgrey;
+  opacity: 0.7;
+}
 
 /* --------------Search & Auth Form-------------- */
 
@@ -80,16 +93,14 @@ footer {
 /* --------------Gallery Page-------------- */
 
 .gallery-btn {
-  margin: 0 auto 30px;
-  width: 85%;
-  color: black;
-  box-shadow: 0 0 1rem lightgrey;
+  width: 100%;
+  box-shadow: 0 0 0.3rem lightgrey;
 }
 
 .gallery-bottom {
   display: flex;
   justify-content: space-evenly;
-  text-shadow: 1px 1px lightgrey;
+  text-shadow: 1px 1px lightsteelblue;
 }
 
 /* --------------Detail Page-------------- */
@@ -139,15 +150,9 @@ footer {
 
 /* --------------Profile Page-------------- */
 
-.flex-button {
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: space-around;
-}
-
 .profile-btn {
   width: 150px;
-  box-shadow: 0 0 1em grey;
+  box-shadow: 0 0 0.3rem lightgrey;
 }
 
 .my-comment-item {
