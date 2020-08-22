@@ -16,6 +16,10 @@ footer {
   color: rgb(80, 80, 80);
 }
 
+.text-shadow {
+  text-shadow: 1px 1px rgb(66, 66, 66);
+}
+
 /* --------------Used On Most of Gallery Pics-------------- */
 
 .cover {
@@ -44,9 +48,9 @@ footer {
   opacity: 0.7;
 }
 
-/* --------------Search & Auth Form-------------- */
+/* --------------Search & Auth & Edit Form-------------- */
 
-.registration {
+.form-box {
   background-color: rgb(179, 217, 219, 0.8);
   color: black;
   width: 350px;
@@ -63,7 +67,7 @@ footer {
   height: 700px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('https://i.imgur.com/j3HNVfH.jpg');
+  background-image: url('https://i.imgur.com/gOW51bk.jpg');
 }
 
 .auth-btn {
@@ -94,7 +98,7 @@ footer {
 .gallery-bottom {
   display: flex;
   justify-content: space-evenly;
-  text-shadow: 1px 1px lightsteelblue;
+  text-shadow: 1px 1px rgb(146, 146, 146);
 }
 
 /* --------------Detail Page-------------- */
@@ -128,6 +132,7 @@ footer {
 .add-comment button {
   position: relative;
   top: 25px;
+  left: 25px;
 }
 
 /* --------------Mars Page-------------- */
@@ -150,6 +155,15 @@ footer {
 .profile-btn {
   width: 100px;
   box-shadow: 0 0 0.3rem lightgrey;
+}
+
+/* --------------Edit Page-------------- */
+
+.edit-background {
+  height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('https://i.imgur.com/6ehJaMQ.jpg');
 }
 
 @media (max-width: 900px) {

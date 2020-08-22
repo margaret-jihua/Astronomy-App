@@ -1,10 +1,8 @@
-<!-- <h3>See Mars Rover Photoes Taken By Curiosity Yesterday</h3> -->
-
 <div class="slider">
     <ul class="slides">
         <li>
             <img src="https://mars.nasa.gov/system/news_items/main_images/8442_PIA23240-16.jpg"> <!-- front image -->
-            <div class="caption center-align">
+            <div class="caption center-align text-shadow">
                 <h4>See Mars Rover Photoes Last Week!</h4>
                 <h5 class="light grey-text text-lighten-3">Taken By Curiosity</h5>
             </div>
@@ -14,7 +12,7 @@
                 <% if (mars.photos[i]) { %> 
                     <li>
                         <img src="<%= mars.photos[i].img_src %>"> <!-- Mars images -->
-                        <div class="caption right-align">
+                        <div class="caption right-align text-shadow">
                             <h4><%= mars.photos[i].camera.full_name %></h4>
                             <h5 class="light grey-text text-lighten-3">
                                 Earth Date: <%= mars.photos[i].earth_date %>
@@ -40,9 +38,7 @@
             <% if(mars.photos[i]) { %> 
                 <div class="col s12">
                     <img class="cover" src="<%= mars.photos[i].img_src %> " height="400">
-                    <!-- <div class="right"> -->
-                    <div class="above right"><%= mars.photos[i].camera.full_name %></div>
-                    <!-- </div> -->
+                    <div class="above right text-shadow"><%= mars.photos[i].camera.full_name %></div>
                 </div>
             <% } %> 
         <% } %> 

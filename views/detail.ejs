@@ -12,9 +12,9 @@
             <form class="center" method="POST" action="/profile">
                 <input hidden type="date" id="date" name="date" value="<%= apod.date %>">
                 <% if (apod.hdurl) { %>
-                    <input hidden type="text" id="url" name="url" value="<%= apod.hdurl %>">
+                    <input hidden type="text" name="url" value="<%= apod.hdurl %>">
                 <% } else { %> 
-                    <input hidden type="text" id="url" name="url" value="<%= apod.url %>">
+                    <input hidden type="text" name="url" value="<%= apod.url %>">
                 <% } %> 
                 <button class="fave-btn btn waves-effect waves-light red lighten-2" type="submit">Add to Favorite</button>
             </form>
