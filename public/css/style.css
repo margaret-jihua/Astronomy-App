@@ -20,6 +20,10 @@ footer {
   text-shadow: 1px 1px rgb(66, 66, 66);
 }
 
+.text-shadow-light {
+  text-shadow: 1px 1px rgb(146, 146, 146);
+}
+
 /* --------------Used On Most of Gallery Pics-------------- */
 
 .cover {
@@ -46,6 +50,7 @@ footer {
 .info button {
   box-shadow: 0 0 0.2rem lightgrey;
   opacity: 0.7;
+  margin-bottom: 15px;
 }
 
 /* --------------Search & Auth & Edit Form-------------- */
@@ -91,14 +96,6 @@ footer {
 .search-btn {
   margin-top: 12px;
   width: 100%;
-}
-
-/* --------------Gallery Page-------------- */
-
-.gallery-bottom {
-  display: flex;
-  justify-content: space-evenly;
-  text-shadow: 1px 1px rgb(146, 146, 146);
 }
 
 /* --------------Detail Page-------------- */
@@ -183,10 +180,6 @@ footer {
   
   footer {
     text-align: center;
-  }
-
-  .gallery-bottom {
-    font-size: 14px;
   }
 }  
 

@@ -32,7 +32,7 @@ Public Site : [The Astronomy App](https://astronomy-picture-app.herokuapp.com/)
 
 ## Models
 
-<img src='https://github.com/margaret-jihua/Astronomy-App/blob/master/Untitled%20Diagram.png?raw=true' alt='ERD'>
+<img src='ERD.png' alt='ERD'>
 
 ### User Model
 
