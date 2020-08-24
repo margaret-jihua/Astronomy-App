@@ -19,7 +19,7 @@ router.get('/', isLoggedIn, (req, res) => {
     })
     .catch(err => {
         console.log(err);
-        res.status(404).render('404')
+        res.status(400).render('404')
     })
 });
 
@@ -100,7 +100,7 @@ router.get('/edit', isLoggedIn, (req, res) => {
     })
     .catch(err => {
         console.log(err);
-        res.status(404).render('404')
+        res.status(400).render('404')
     })
 })
 
