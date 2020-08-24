@@ -180,4 +180,9 @@ footer {
   nav {
     line-height: inherit;
   }
+  
+  footer {
+    text-align: center;
+  }
 }  
+
