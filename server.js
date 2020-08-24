@@ -64,6 +64,7 @@ app.get('/', (req, res) => {
   })
   .catch(err => {
     console.log(err);
+    res.status(400).render('404')
   })
 });
 
@@ -82,13 +83,13 @@ app.get('/gallery', (req, res) => {
   })
   .catch(err => {
     console.log(err);
+    res.status(400).render('404')
   })
 })
 
 // Mars
 app.get('/Mars', (req, res) => {
   let date = moment().subtract(7, "days").format('YYYY-MM-DD')
-  // let date = '2020-08-01'
   let marsURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${date}&api_key=${API_KEY}`
   axios.get(marsURL)  
   .then(marsData => {
@@ -96,6 +97,7 @@ app.get('/Mars', (req, res) => {
   })
   .catch(err => {
     console.log(err);
+    res.status(400).render('404')
   })
 })
 
@@ -123,7 +125,8 @@ app.get('/detail', (req, res) => {
     })
     .catch(err => {
       console.log(err);
-    })
+      res.status(400).render('404')
+  })
 })
 
 // Detail POST
@@ -139,6 +142,9 @@ app.post('/detail', isLoggedIn, (req, res) => {
     userId: userId
   }).then(() => {
     res.redirect(`/detail?date=${date}#comment`)
+  })
+  .catch(err => {
+    console.log(err)
   })
 })
 

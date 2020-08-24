@@ -25,10 +25,10 @@ Public Site : [The Astronomy App](https://astronomy-picture-app.herokuapp.com/)
 ## Resource Credit
 
 * Materialize framework 
-* Social media icons from [icons8]('https://icons8.com')
-* [APOD API]('https://api.nasa.gov/) powered by [NASA]('https://www.nasa.gov/)
-* [APOD documatation]('https://github.com/nasa/apod-api')
-* [Mars Rover Photos API powered by NASA]('https://api.nasa.gov/)
+* Social media icons from [icons8](https://icons8.com)
+* [APOD API](https://api.nasa.gov/) powered by [NASA](https://www.nasa.gov/)
+* [APOD documatation](https://github.com/nasa/apod-api)
+* [Mars Rover Photos API powered by NASA](https://api.nasa.gov/)
 
 ## Models
 
@@ -113,6 +113,47 @@ One-to-Many relationship with user model, one user has many comments
 | DELETE | /profile/comment/:id | profile.js | Delete a comment |
 | GET | /profile/edit | profile.js | Edit username form |
 | PUT | /profile/edit/:id | profile.js | Update username |
+
+## API Calls
+
+### Get APOD by date ---- Home page & Detail page
+```
+https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}
+```
+
+Infomation includes date, explanation, hdurl, url, media type. 
+
+Some data returns a video, in that case use `<iframe>` instead of `<img>`
+
+Some data doesn't include picture url, in that case show image from `https://http.cat/204` [no content]
+
+### Get a given number of random APOD ---- Home page & Gallery page
+```
+https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=${number}
+```
+
+Information returns an array of APOD data
+
+### Get Mars Rover Photos by date ---- Mars page
+```
+https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${date}&api_key=${API_KEY}
+```
+
+Infomation returns an array of photo objects under the chosen earth_date
+
+data includes img_src, earth_date, camera object
+
+usage: 
+```
+mars.photos[i].camera.full_name
+```
+
+## Things can be improved
+
+- Set a limit for slideshow in case it gets more then 10 pictures, so it won't be too crowded
+- Add functionality to allow users to choose pictures from collection for sildeshow
+- In detail page, the [Add comment] button outbound at phone screen
+- In detail page, add functionailty in comment section to click other username to see their collections
 
 ## Author
 Jihua (Margaret) Huang

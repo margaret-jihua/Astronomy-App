@@ -19,6 +19,7 @@ router.get('/', isLoggedIn, (req, res) => {
     })
     .catch(err => {
         console.log(err);
+        res.status(404).render('404')
     })
 });
 
@@ -84,6 +85,9 @@ router.delete('/comment/:id', (req, res) => {
     .then(() => {
         res.redirect('/profile#comments')
     })
+    .catch(err => {
+        console.log(err);
+    })
 })
 
 // Edit page to get new username
@@ -96,6 +100,7 @@ router.get('/edit', isLoggedIn, (req, res) => {
     })
     .catch(err => {
         console.log(err);
+        res.status(404).render('404')
     })
 })
 
@@ -109,6 +114,9 @@ router.put('/edit/:id', isLoggedIn, (req, res) => {
     .then(userNameChanged => {
         console.log(userNameChanged);
         res.redirect('/profile')
+    })
+    .catch(err => {
+        console.log(err);
     })
 })
 
