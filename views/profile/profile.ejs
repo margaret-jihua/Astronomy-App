@@ -46,14 +46,14 @@
     <div class="slider">
         <ul class="slides">
             <% user.faves.forEach( f => { %>
-                <li>
-                    <% if (f.url.substring(8,11) !== 'www') { %> 
+                <% if (f.url.substring(8,11) !== 'www') { %> 
+                    <li>
                         <img src="<%= f.url %>" alt="<%= f.date %>">
-                    <% } %> 
-                    <div class="caption left-align">
-                        <h5 class="light grey-text text-lighten-3"><%= f.date %></h5>
-                    </div>
-                </li>
+                        <div class="caption left-align">
+                            <h5 class="light grey-text text-lighten-3"><%= f.date %></h5>
+                        </div>
+                    </li>
+                <% } %> 
             <% }) %> 
         </ul>
     </div>
