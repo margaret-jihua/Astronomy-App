@@ -57,7 +57,7 @@ Public Site : [The Astronomy App](https://astronomy-picture-app.herokuapp.com/)
 
 ### UsersFaves Model
 
-Join-table associated with user and fave model
+Join-table associated with user and fave model, many-to-many relationship
 
 | Column Name | Data Type | Notes |
 | --------------- | ------------- | ------------------------------ |
@@ -121,7 +121,7 @@ One-to-Many relationship with user model, one user has many comments
 https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}
 ```
 
-Infomation includes date, explanation, hdurl, url, media type. 
+Infomation includes date, explanation, hdurl, url, media type
 
 Some data returns a video, in that case use `<iframe>` instead of `<img>`
 
@@ -140,6 +140,8 @@ https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${dat
 ```
 
 Infomation returns an array of photo objects under the chosen earth_date
+
+The number of photos is not fixed, today and yesterday photos may not upload yet, thus showing photos 7 days ago
 
 data includes img_src, earth_date, camera object
 
