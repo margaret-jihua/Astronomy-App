@@ -145,6 +145,7 @@ app.post('/detail', isLoggedIn, (req, res) => {
   })
   .catch(err => {
     console.log(err)
+    res.status(400).render('404')
   })
 })
 

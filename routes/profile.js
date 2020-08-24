@@ -56,6 +56,7 @@ router.post('/', isLoggedIn, (req, res) => {
     })
     .catch(err => {
         console.log(err);
+        res.status(400).render('404')
     })
 })
 
@@ -73,7 +74,8 @@ router.delete('/:id', isLoggedIn, (req, res) => {
     })
     .catch(err => {
         console.log(err);
-    })    
+        res.status(400).render('404')
+    })      
 })
 
 // Delete the comment in profile comments 
@@ -87,6 +89,7 @@ router.delete('/comment/:id', (req, res) => {
     })
     .catch(err => {
         console.log(err);
+        res.status(400).render('404')
     })
 })
 
@@ -117,6 +120,7 @@ router.put('/edit/:id', isLoggedIn, (req, res) => {
     })
     .catch(err => {
         console.log(err);
+        res.status(400).render('404')
     })
 })
 
