@@ -82,6 +82,10 @@ One-to-Many relationship with user model, one user has many comments
 
 ## Routes
 
+- Server Route
+- Auth Route
+- Profile Route
+
 ### Server Routes
 
 | Method | Path | Location | Purpose |
@@ -92,6 +96,7 @@ One-to-Many relationship with user model, one user has many comments
 | GET | /mars | server.js | Show mars rover pictures in mars page |
 | GET | /detail | server.js | Detail page of each astronomy picture |
 | POST | /detail | server.js | Add comments in detail page |
+| GET | * | server.js | Error page |
 
 ### Auth Routes
 
