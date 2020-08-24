@@ -1,26 +1,38 @@
 # Astronomy App
 
+Public Site : [The Astronomy App](https://astronomy-picture-app.herokuapp.com/)
+
 ## User Story
 
-As a user, I want to search the Astronomy Picture by the date 
+* As a user, I want to search the Astronomy Picture by the date 
 * As a user, I want to sign up to save my favorite pictures
-* As a user, I want to view my saved pictures in different category
 * As a user, I can delete pictures saved in favorite
-* As a user, I can delete categories along with pictures saved in it
-
-## Express Authentication
-
-Express authentication template using Passport + flash messages + custom middleware
+* As a user, I can add comments under astronmy pictures
+* As a user, I can view my comments in profile page and delete it
+* As a user, I can change my username
 
 ## What it includes
 
-* Sequelize user model / migration
+* Sequelize user model / fave model / usersfaves model / comment model
 * Settings for PostgreSQL
 * Passport and passport-local for authentication
 * Sessions to keep user logged in between pages
 * Flash messages for errors and successes
 * Passwords that are hashed with BCrypt
 * EJS Templating and EJS Layouts
+* Server route / auth route / profile route
+
+## Resource Credit
+
+* Materialize framework 
+* Social media icons from [icons8]('https://icons8.com')
+* [APOD API]('https://api.nasa.gov/) powered by [NASA]('https://www.nasa.gov/)
+* [APOD documatation]('https://github.com/nasa/apod-api')
+* [Mars Rover Photos API powered by NASA]('https://api.nasa.gov/)
+
+## Models
+
+<img src='https://github.com/margaret-jihua/Astronomy-App/blob/master/Untitled%20Diagram.png?raw=true' alt='ERD'>
 
 ### User Model
 
@@ -33,85 +45,74 @@ Express authentication template using Passport + flash messages + custom middlew
 | createdAt | Date | Auto-generated |
 | updatedAt | Date | Auto-generated |
 
-### Default Routes
+### Fave Model
+
+| Column Name | Data Type | Notes |
+| --------------- | ------------- | ------------------------------ |
+| id | Integer | Serial Primary Key, Auto-generated |
+| date | String | Date of the picture user liked |
+| url | String | URL of the picture user liked |
+| createdAt | Date | Auto-generated |
+| updatedAt | Date | Auto-generated |
+
+### UsersFaves Model
+
+Join-table associated with user and fave model
+
+| Column Name | Data Type | Notes |
+| --------------- | ------------- | ------------------------------ |
+| id | Integer | Serial Primary Key, Auto-generated |
+| userId | Integer | User id from user model |
+| faveId | Integer | Fave id from fave model |
+| createdAt | Date | Auto-generated |
+| updatedAt | Date | Auto-generated |
+
+### Comment Model
+
+One-to-Many relationship with user model, one user has many comments
+
+| Column Name | Data Type | Notes |
+| --------------- | ------------- | ------------------------------ |
+| id | Integer | Serial Primary Key, Auto-generated |
+| date | string | Date of the picture to comment on |
+| content | text | Content of the comment |
+| userId | Integer | User id from user model |
+| createdAt | Date | Auto-generated |
+| updatedAt | Date | Auto-generated 
+
+## Routes
+
+### Server Routes
 
 | Method | Path | Location | Purpose |
 | ------ | ---------------- | -------------- | ------------------- |
 | GET | / | server.js | Home page |
+| GET | /search | server.js | Search page |
+| GET | /gallery | server.js | Show random APOD pictures in gallery |
+| GET | /mars | server.js | Show mars rover pictures in mars page |
+| GET | /detail | server.js | Detail page of each astronomy picture |
+| POST | /detail | server.js | Add comments in detail page |
+
+### Auth Routes
+
+| Method | Path | Location | Purpose |
+| ------ | ---------------- | -------------- | ------------------- |
 | GET | /auth/login | auth.js | Login form |
 | GET | /auth/signup | auth.js | Signup form |
 | POST | /auth/login | auth.js | Login user |
-| POST | /auth/signup | auth.js | Creates User |
+| POST | /auth/signup | auth.js | Creates user |
 | GET | /auth/logout | auth.js | Removes session info |
-| GET | /profile | server.js | Regular User Profile |
 
-## Steps To Use
+### Profile Routes
 
-#### 1. Create a new repo on Github and use your 'express-authentication' as the template
+| Method | Path | Location | Purpose |
+| ------ | ---------------- | -------------- | ------------------- |
+| GET | /profile | profile.js | Show users' collections and comments |
+| POST | /profile | profile.js | Add favorite picture to user's collection |
+| DELETE | /profile/:id | profile.js | Delete a picture from user's collection |
+| DELETE | /profile/comment/:id | profile.js | Delete a comment |
+| GET | /profile/edit | profile.js | Edit username form |
+| PUT | /profile/edit/:id | profile.js | Update username |
 
-When we are finished with this boilerplate, we are going to make it a template on Github that will allow us to create a new repo on Github with all this code already loaded in.
-* Go to `github.com` and create a new repository. In the template dropdown, choose this template.
-* Clone your new repo to your local machine
-* Get Codin'!
-
-#### 2. Delete any .keep files
-
-The `.keep` files are there to maintain the file structure of the auth. If there is a folder that has nothing in it, git won't add it. The dev work around is to add a file to it that has nothing in it, just forces git to keep the folder so we can use it later.
-
-#### 3. Install node modules from the package.json
-
-```
-npm install
-```
-
-(Or just `npm i` for short)
-
-#### 4. Customize with new project name
-
-Remove defaulty type stuff. Some areas to consider are:
-
-* Title in `layout.ejs`
-* Description/Repo Link in `package.json`
-* Remove boilerplate's README content and replace with new project's readme
-
-#### 5. Create a new database for the new project
-
-Using the sequelize command line interface, you can create a new database from the terminal.
-
-```
-createdb <new_db_name>
-```
-
-#### 6. Update `config.json`
-
-* Change the database name
-* Other settings are likely okay, but check username, password, and dialect
-
-#### 7. Check the models and migrations for relevance to your project's needs
-
-For example, if your project requires a birthdate field, then don't add that in there. 
-
-> When changing your models, update both the model and the migration.
-
-#### 8. Run the migrations
-
-```
-sequelize db:migrate
-```
-
-#### 9. Add a `.env` file with the following fields:
-
-* SESSION_SECRET: Can be any random string; usually a hash in production
-* PORT: Usually 3000 or 8000
-
-#### 10. Run server; make sure it works
-
-```
-nodemon
-```
-
-or
-
-```
-node index.js
-```
+## Author
+Jihua (Margaret) Huang
