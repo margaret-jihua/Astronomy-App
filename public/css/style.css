@@ -53,6 +53,10 @@ footer {
   margin-bottom: 15px;
 }
 
+.info button:hover {
+  opacity: 1;
+}
+
 /* --------------Search & Auth & Edit Form-------------- */
 
 .form-box {
